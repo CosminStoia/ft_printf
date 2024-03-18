@@ -25,9 +25,10 @@ static int	ft_printnegative(int n)
 	else if (n < 0)
 	{
 		ft_putchar('-');
-		count++;
 		n = -n;
+		count++;
 	}
+	count += ft_putnbr(n);
 	return (count);
 }
 
@@ -36,16 +37,17 @@ int	ft_putnbr(int n)
 	char	result;
 	int		count;
 
-	count = ft_printnegative(n);
+	count = 0;
 	if (n == 0)
 	{
 		ft_putchar('0');
-		return (count + 1);
+		return (1);
 	}
+	else if (n < 0)
+		return (ft_printnegative(n));
 	else if (n >= 10)
 		count += ft_putnbr(n / 10);
 	result = (n % 10) + '0';
-	ft_putchar(result);
-	count++;
+	count += ft_putchar(result);
 	return (count);
 }

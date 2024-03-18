@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:25:08 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/18 15:47:10 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:25:12 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
 	while (str[i] != '\0')
 	{
 		write(1, &str[i], 1);
 		i++;
 	}
-	if (write(1, &str[i], 1) < 0)
-		return (-1);
-	return (1);
+	return (i);
 }

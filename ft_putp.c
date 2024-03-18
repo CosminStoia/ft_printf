@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:31:53 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/18 15:47:06 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:33:51 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,8 @@ int	ft_putp(unsigned long n)
 	int		count;
 
 	count = 0;
-	if (n == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
 	if (n >= 16)
-		count = ft_putp(n / 16);
+		count += ft_putp(n / 16);
 	if (count < 0)
 		return (-1);
 	n %= 16;
