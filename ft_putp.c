@@ -6,28 +6,37 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:31:53 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/16 18:00:07 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:47:06 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	hex_convert(unsigned long n)
+static int	ft_nbr(unsigned long n)
 {
-	int	i;
-	int	reminder;
-	int	result;
+	if (n >= 0 && n <= 9)
+		return (n + '0');
+	return (n - 10 + 'a');
+}
 
-	i = 1;
-	while (n > 0)
+int	ft_putp(unsigned long n)
+{
+	char	a;
+	int		count;
+
+	count = 0;
+	if (n == 0)
 	{
-		reminder = n % 16;
-		if (reminder < 10)
-			result += reminder * i;
-		else
-			result += (reminder - 10 + 'A') * i;
-		n = n / 16;
-		i *= 10;
+		ft_putchar('0');
+		return (1);
 	}
-	return (result);
+	if (n >= 16)
+		count = ft_putp(n / 16);
+	if (count < 0)
+		return (-1);
+	n %= 16;
+	a = ft_nbr(n);
+	if (write(1, &a, 1) < 0)
+		return (-1);
+	return (count + 1);
 }

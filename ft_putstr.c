@@ -6,11 +6,11 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:25:08 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/16 18:26:20 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:47:10 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *str)
 {

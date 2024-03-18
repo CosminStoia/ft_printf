@@ -6,34 +6,32 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:38:10 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/16 13:40:45 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:47:14 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	ft_putx(unsigned int n)
+static int	ft_nbr(int n)
 {
-	int i;
-	char buffer[11];
-	char *hex_digits;
+	if (n >= 0 && n <= 9)
+		return (n + '0');
+	return (n - 10 + 'a');
+}
 
-	i = 0;
+int	ft_putx(unsigned int n)
+{
+	char	a;
+	int		count;
 
-	if (n == 0)
-	{
-		ft_putc('0');
-		return (1);
-	}
-	while (n > 0)
-	{
-		buffer[i++] = n % 10 + '0';
-		n = n / 10;
-	}
-	while (i > 0)
-	{
-		ft_putc(buffer[i]);
-		i--;
-	}
-	return (1);
+	count = 0;
+	if (n >= 16)
+		count = ft_putx(n / 16);
+	if (count < 0)
+		return (-1);
+	n %= 16;
+	a = ft_nbr(n);
+	if (write(1, &a, 1) < 0)
+		return (-1);
+	return (count + 1);
 }

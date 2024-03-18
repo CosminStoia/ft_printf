@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:21:21 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/16 18:28:13 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:46:38 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include <stdio.h>
+# include <stdarg.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
+int	ft_put_unsigned_nbr(int n);
 int	ft_putchar(char c);
 int	ft_putnbr(int n);
+int	ft_putp(unsigned long n);
 int	ft_putstr(char *str);
-int	ft_put_unsigned_nbr(int n);
-
+int	ft_putx(unsigned int n);
+int	ft_putxx(unsigned int n);
 
 #endif
