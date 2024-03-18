@@ -11,7 +11,7 @@ CFILES = \
 		./ft_putp.c \
 		./ft_putstr.c \
 		./ft_putx.c \
-		./ft_putxx.c \
+		./ft_putxx.c
 		
 OBJECTS = $(CFILES:%.c=%.o)
 
