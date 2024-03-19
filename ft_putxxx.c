@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:23:22 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/19 11:23:15 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 19:28:18 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_nbr(int n)
 
 int	ft_putxxx(unsigned int n)
 {
-	char	a;
+	char	chr;
 	int		count;
 
 	count = 0;
@@ -30,8 +30,8 @@ int	ft_putxxx(unsigned int n)
 	if (count < 0)
 		return (-1);
 	n %= 16;
-	a = ft_nbr(n);
-	if (write(1, &a, 1) < 0)
+	chr = ft_nbr(n);
+	if (write(1, &chr, 1) < 0)
 		return (-1);
 	return (count + 1);
 }
