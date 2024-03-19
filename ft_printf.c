@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:20:42 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/19 18:11:04 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:34:00 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%')
 		{
 			ret = ft_result((str + 1), args);
-			if (ret < 0)
+			if (ret == -1)
 				return (-1);
 			result += ret;
 			str++;

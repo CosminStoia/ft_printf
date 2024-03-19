@@ -12,16 +12,15 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+static int	ft_putnbr_recursive(int n, int *count)
 {
 	char	result;
-	int		count;
 
-	count = 0;
 	if (n == -2147483648)
 	{
 		if (write(1, "-2147483648", 11) == -1)
 			return (-1);
+		*count += 11;
 		return (11);
 	}
 	else if (n < 0)
@@ -29,12 +28,23 @@ int	ft_putnbr(int n)
 		if (write(1, "-", 1) == -1)
 			return (-1);
 		n = -n;
-		count++;
+		(*count)++;
 	}
 	if (n >= 10)
-		count += ft_putnbr(n / 10);
+		ft_putnbr_recursive(n / 10, count);
 	result = (n % 10) + '0';
 	if (write(1, &result, 1) == -1)
 		return (-1);
-	return (count + 1);
+	(*count)++;
+	return (1);
+}
+
+int	ft_putnbr(int n)
+{
+	int	count;
+
+	count = 0;
+	if (ft_putnbr_recursive(n, &count) == -1)
+		return (-1);
+	return (count);
 }
