@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:20:42 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/19 11:22:36 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:11:04 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,31 @@
 
 int	ft_result(const char *str, va_list args)
 {
-	int	count;
-
-	count = 0;
 	if (*str == 'c')
-		count += ft_putchar(va_arg(args, int));
+		return (ft_putchar(va_arg(args, int)));
 	else if (*str == 's')
-		count += ft_putstr(va_arg(args, char *));
+		return (ft_putstr(va_arg(args, char *)));
 	else if (*str == '%')
-		count += ft_putchar('%');
+		return (ft_putchar('%'));
 	else if (*str == 'd' || *str == 'i')
-		count += ft_putnbr(va_arg(args, int));
+		return (ft_putnbr(va_arg(args, int)));
 	else if (*str == 'u')
-		count += ft_put_unsigned_nbr(va_arg(args, unsigned int));
+		return (ft_put_unsigned_nbr(va_arg(args, unsigned int)));
 	else if (*str == 'p')
-	{
-		count += ft_putstr("0x");
-		count += ft_putp(va_arg(args, unsigned long));
-	}
+		return (ft_putp(va_arg(args, unsigned long)));
 	else if (*str == 'x')
-		count += ft_putx(va_arg(args, unsigned int));
+		return (ft_putx(va_arg(args, unsigned int)));
 	else if (*str == 'X')
-		count += ft_putxxx(va_arg(args, unsigned int));
+		return (ft_putxxx(va_arg(args, unsigned int)));
 	else
-		count += ft_putchar(*str);
-	return (count);
+		return (-1);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list			args;
 	unsigned int	result;
+	int				ret;
 
 	result = 0;
 	va_start(args, str);
@@ -54,14 +48,18 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			if (*(str + 1) == '%')
-				result += ft_putchar('%');
-			else
-				result += ft_result((str + 1), args);
+			ret = ft_result((str + 1), args);
+			if (ret < 0)
+				return (-1);
+			result += ret;
 			str++;
 		}
 		else
-			result += ft_putchar(*str);
+		{
+			if (ft_putchar(*str) != 1)
+				return (-1);
+			result++;
+		}
 		str++;
 	}
 	va_end(args);

@@ -6,23 +6,39 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:25:08 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/18 17:25:12 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 13:32:13 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+static int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (ft_putstr("(null)"));
 	while (str[i] != '\0')
 	{
-		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);
+}
+
+int	ft_putstr(char *str)
+{
+	size_t	ret;
+	size_t	str_len;
+
+	if (!str)
+	{
+		ret = write(1, "(null)", 6);
+		if (ret != 6)
+			return (-1);
+		return (6);
+	}
+	str_len = ft_strlen(str);
+	ret = write(1, str, str_len);
+	if (ret != str_len)
+		return (-1);
+	return (ret);
 }
