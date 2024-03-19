@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putXX.c                                         :+:      :+:    :+:   */
+/*   ft_putxxx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:23:22 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/18 15:47:18 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:23:15 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	ft_nbr(int n)
 	return (n - 10 + 'A');
 }
 
-int	ft_putxx(unsigned int n)
+int	ft_putxxx(unsigned int n)
 {
 	char	a;
 	int		count;
 
 	count = 0;
 	if (n >= 16)
-		count = ft_putxx(n / 16);
+		count = ft_putxxx(n / 16);
 	if (count < 0)
 		return (-1);
 	n %= 16;

@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:20:42 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/18 18:04:26 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:22:36 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_result(const char *str, va_list args)
 	else if (*str == 'x')
 		count += ft_putx(va_arg(args, unsigned int));
 	else if (*str == 'X')
-		count += ft_putxx(va_arg(args, unsigned int));
+		count += ft_putxxx(va_arg(args, unsigned int));
 	else
 		count += ft_putchar(*str);
 	return (count);
