@@ -31,12 +31,13 @@ static int	ft_putnbr_recursive(int n, int *count)
 		(*count)++;
 	}
 	if (n >= 10)
-		ft_putnbr_recursive(n / 10, count);
+		if (ft_putnbr_recursive(n / 10, count) == -1)
+			return (-1);
 	result = (n % 10) + '0';
 	if (write(1, &result, 1) == -1)
 		return (-1);
 	(*count)++;
-	return (1);
+	return (*count);
 }
 
 int	ft_putnbr(int n)

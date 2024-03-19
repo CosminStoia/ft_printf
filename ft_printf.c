@@ -6,7 +6,7 @@
 /*   By: cstoia <cstoia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:20:42 by cstoia            #+#    #+#             */
-/*   Updated: 2024/03/19 18:34:00 by cstoia           ###   ########.fr       */
+/*   Updated: 2024/03/19 19:20:39 by cstoia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,12 @@ int	ft_result(const char *str, va_list args)
 		return (-1);
 }
 
-int	ft_printf(const char *str, ...)
+static int	ft_parse_format(const char *str, va_list args)
 {
-	va_list			args;
-	unsigned int	result;
-	int				ret;
+	int	result;
+	int	ret;
 
 	result = 0;
-	va_start(args, str);
-	if (!str)
-		return (-1);
 	while (*str != '\0')
 	{
 		if (*str == '%')
@@ -62,6 +58,21 @@ int	ft_printf(const char *str, ...)
 		}
 		str++;
 	}
+	return (result);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	va_list			args;
+	unsigned int	result;
+
+	va_start(args, str);
+	if (!str)
+	{
+		va_end(args);
+		return (-1);
+	}
+	result = ft_parse_format(str, args);
 	va_end(args);
 	return (result);
 }
