@@ -1,5 +1,5 @@
-## ft_printf
-
+# ft_printf
+## Overview
 Welcome to ft_printf, a custom implementation of the printf function in C, developed as part of the 42 programming curriculum. This project aims to recreate the functionality of the standard C library's printf function while adhering to the requirements and constraints specified in the project guidelines.
 
 ## About
